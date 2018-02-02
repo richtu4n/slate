@@ -27,7 +27,7 @@ You must replace <code>AUTH_TOKEN</code> with the root token for the environment
 
 # Travellers
 
-## Retrieve
+## Retrieve a traveller
 
 > Example Request
 
@@ -59,7 +59,7 @@ Parameter | Description
 id | The id of the traveller to retrieve.
 
 
-## Search
+## Search travellers
 
 > Example Request
 
