@@ -50,13 +50,13 @@ This endpoint retrieves a specific traveller by its id.
 
 ### HTTP Request
 
-`GET https://traveller-directory.hotelflex.io/travellers/<id>`
+`GET https://api.hotelflex.io/TDIR/travellers/<id>`
 
 ### URL Parameters
 
-Parameter | Description
---------- | -----------
-id | The id of the traveller to retrieve.
+Parameter | Required | Description
+--------- | -------- | -----------
+id | true | The id of the traveller to retrieve.
 
 
 ## Search travellers
@@ -87,11 +87,49 @@ This endpoint retrieves all travellers.
 
 ### HTTP Request
 
-`GET https://traveller-directory.hotelflex.io/travellers`
+`GET https://api.hotelflex.io/TDIR/travellers`
 
 ### Query Parameters
 
-Parameter | Description
---------- | -----------
-meta | The result will contain travellers whose meta field contains this object.
+Parameter | Required | Description
+--------- | -------- | -----------
+meta | false | The result will contain travellers whose meta field contains this object.
 
+
+## Register a traveller
+
+> Example Request
+
+```javascript
+const Api = require('hotelflex-client')('AUTH_TOKEN')
+
+const traveller = Api.TravellerDirectory.Traveller.register({
+  email: 'example@hotelflex.io',
+  profile: {},
+})
+```
+
+> Example Response
+
+```json
+{
+  "id": "1",
+  "email": "example@hotelflex.io",
+  "profile": {}z
+},
+```
+
+This endpoint registers a new traveller.
+
+### HTTP Request
+
+`POST https://api.hotelflex.io/TDIR/travellers/register`
+
+### Body Parameters
+
+Parameter | Required | Description
+--------- | -------- | -----------
+email | true | This is the travellers email address.
+profile | true | This is the travellers profile.
+phoneNumber | false | self explanatory.
+meta | false | This is an object you can put anything into.
