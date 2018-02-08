@@ -42,7 +42,8 @@ const traveller = Api.TravellerDirectory.Traveller.retrieve('1')
 ```json
 {
   "id": "1",
-  "name": "John Smith"
+  "email": "example@hotelflex.io",
+  "profile": {}
 }
 ```
 
@@ -77,9 +78,10 @@ const travellers = Api.TravellerDirectory.Traveller.search({
 [
   {
     "id": "1",
-    "name": "John Smith"
+    "email": "example@hotelflex.io",
+    "profile": {},
     "meta": { "reference": "TEST_REF" }
-  },
+  }
 ]
 ```
 
@@ -115,7 +117,7 @@ const traveller = Api.TravellerDirectory.Traveller.register({
 {
   "id": "1",
   "email": "example@hotelflex.io",
-  "profile": {}z
+  "profile": {}
 },
 ```
 
