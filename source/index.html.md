@@ -133,5 +133,132 @@ Parameter | Required | Description
 --------- | -------- | -----------
 email | true | This is the travellers email address.
 profile | true | This is the travellers profile.
-phoneNumber | false | self explanatory.
+phoneNumber | false | This is the travellers phone number.
 meta | false | This is an object you can put anything into.
+
+
+## Update a traveller
+
+> Example Request
+
+```javascript
+const Api = require('hotelflex-client')('AUTH_TOKEN')
+
+const traveller = Api.TravellerDirectory.Traveller.update({
+  profile: {},
+  phoneNumber: "0712345689"
+})
+```
+
+> Example Response
+
+```json
+{
+  "id": "1",
+  "email": "example@hotelflex.io",
+  "profile": {}
+  "phoneNumber": "0712345689",
+},
+```
+
+This endpoint updates the data on the traveller.
+
+### HTTP Request
+
+`POST https://api.hotelflex.io/TDIR/travellers/update`
+
+### Body Parameters
+
+Parameter | Required | Description
+--------- | -------- | -----------
+id | true | This is the id of the traveller.
+profile | false | This is the travellers profile.
+phoneNumber | false | This is the travellers phone number.
+
+
+# Hotels
+
+## Retrieve
+
+> Example Request
+
+```javascript
+const Api = require('hotelflex-client')('AUTH_TOKEN')
+
+const hotel = Api.HotelManagement.Hotel.retrieve('1')
+```
+
+> Example Response
+
+```json
+{
+  "id": "1",
+  "name": "test hotel",
+  "users": [
+    {
+      "id": "1",
+      "accountId": "1",
+      "active": true
+    }
+  ],
+  "meta": {}
+}
+```
+
+This endpoint retrieves a hotel.
+
+### HTTP Request
+
+`GET https://api.hotelflex.io/HM/hotels/<id>`
+
+### URL Parameters
+
+Parameter | Required | Description
+--------- | -------- | -----------
+id | true | This is the id of the hotel.
+
+
+## Search
+
+> Example Request
+
+```javascript
+const Api = require('hotelflex-client')('AUTH_TOKEN')
+
+const hotel = Api.HotelManagement.Hotel.search({
+  name: 'test hotel',
+  meta: { reference: 'TEST_REF' },
+})
+```
+
+> Example Response
+
+```json
+[
+  {
+    "id": "1",
+    "name": "test hotel",
+    "users": [
+      {
+        "id": "1",
+        "accountId": "1",
+        "active": true
+      }
+    ],
+    "meta": { "reference": "TEST_REF" }
+  }
+]
+```
+
+This endpoint searches for hotels that match the search query.
+
+### HTTP Request
+
+`GET https://api.hotelflex.io/HM/hotels`
+
+### Query Parameters
+
+Parameter | Required | Description
+--------- | -------- | -----------
+name | false | This is the name of the hotel.
+meta | false | The result will contain hotels whose meta field contains this object.
